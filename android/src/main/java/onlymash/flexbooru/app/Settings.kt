@@ -288,12 +288,12 @@ object Settings {
 
     val doh: DnsOverHttps by lazy {
         val clientBuilder = OkHttpClient.Builder()
-            if (isSniDisable) {
-                clientBuilder.apply {
-                    connectionSpecs(NoSniFactory.tls)
-                    sslSocketFactory(NoSniFactory, NoSniFactory.defaultTrustManager)
-                }
+        if (isSniDisable) {
+            clientBuilder.apply {
+                connectionSpecs(NoSniFactory.tls)
+                sslSocketFactory(NoSniFactory, NoSniFactory.defaultTrustManager)
             }
+        }
         val client = clientBuilder.build()
         when (sp.getString(DNS_OVER_HTTPS_PROVIDER, "cloudflare")) {
             "google" -> DohProviders.buildGoogle(client)
