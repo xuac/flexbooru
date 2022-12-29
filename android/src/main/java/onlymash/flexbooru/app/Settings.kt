@@ -220,22 +220,22 @@ object Settings {
     var latestVersionCode: Long
         get() = sp.getLong(LATEST_VERSION_CODE_KEY, -1L)
         set(value) = sp.edit().putLong(
-            LATEST_VERSION_CODE_KEY, value).apply()
+            LATEST_VERSION_CODE_KEY, -1L).apply()
 
     var latestVersionName: String
         get() = sp.getString(LATEST_VERSION_NAME_KEY, " ") ?: " "
         set(value) = sp.edit().putString(
-            LATEST_VERSION_NAME_KEY, value).apply()
+            LATEST_VERSION_NAME_KEY, " ").apply()
 
     var latestVersionUrl: String
         get() = sp.getString(LATEST_VERSION_URL_KEY, "") ?: ""
         set(value) = sp.edit().putString(
-            LATEST_VERSION_URL_KEY, value).apply()
+            LATEST_VERSION_URL_KEY, "").apply()
 
     var isAvailableOnStore: Boolean
         get() = sp.getBoolean(IS_AVAILABLE_STORE, false)
         set(value) = sp.edit().putBoolean(
-            IS_AVAILABLE_STORE, value).apply()
+            IS_AVAILABLE_STORE, false).apply()
 
     var orderId: String
         get() = sp.getString(ORDER_ID_KEY, "") ?: ""
