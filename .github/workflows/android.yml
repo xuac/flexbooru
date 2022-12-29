@@ -17,10 +17,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      ref: 'cf18bca267c0089572eadea692d9b4440df63224'
+      
     - name: set up JDK
       uses: actions/setup-java@v3
       with:
         java-version: '11'
+        distribution: 'zulu'
         cache: gradle
 
     - name: Setup Gradle
