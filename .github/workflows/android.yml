@@ -31,10 +31,10 @@ jobs:
       uses: gradle/gradle-build-action@v2
 
     - name: Debug Build with Gradle
-      run: ./gradlew assembleDebug -x lint -x test --warning-mode all
+      run: ./gradlew assembleDebug --warning-mode all
 
     - name: Release Build with Gradle
-      run: ./gradlew assembleRelease -x lint -x test
+      run: ./gradlew assembleRelease
 
     - run: ls -lhaR android/build/outputs/apk/
 
