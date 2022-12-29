@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         build: ["Debug", "Release"]
+
     runs-on: ubuntu-latest
 
     env:
@@ -37,5 +38,5 @@ jobs:
       with:
         name: FlexbooruPro${{ matrix.build }}
         path: android/build/outputs/apk/*/*.apk
-        if-no-files-found: ignore
+        if-no-files-found: warn
         retention-days: 90

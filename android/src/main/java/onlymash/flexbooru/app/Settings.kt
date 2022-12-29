@@ -240,17 +240,17 @@ object Settings {
     var orderId: String
         get() = sp.getString(ORDER_ID_KEY, "") ?: ""
         set(value) = sp.edit().putString(
-            ORDER_ID_KEY, value).apply()
+            ORDER_ID_KEY, "").apply()
 
     var orderTime: Long
         get() = sp.getLong(ORDER_TIME_KEY, -1L)
         set(value) = sp.edit().putLong(
-            ORDER_TIME_KEY, value).apply()
+            ORDER_TIME_KEY, -1L).apply()
 
     var orderToken: String
         get() = sp.getString(ORDER_TOKEN_KEY, "") ?: ""
         set(value) = sp.edit().putString(
-            ORDER_TOKEN_KEY, value).apply()
+            ORDER_TOKEN_KEY, "").apply()
 
     var isOrderSuccess: Boolean
         get() = sp.getBoolean(ORDER_SUCCESS_KEY, true)
@@ -273,7 +273,7 @@ object Settings {
     var isGoogleSign: Boolean
         get() = sp.getBoolean(GOOGLE_SIGN_KEY, false)
         set(value) = sp.edit().putBoolean(
-            GOOGLE_SIGN_KEY, value).apply()
+            GOOGLE_SIGN_KEY, false).apply()
 
     var sauceNaoApiKey: String
         get() = sp.getString(SAUCE_NAO_API_KEY_KEY, "") ?: ""
@@ -307,5 +307,5 @@ object Settings {
 
     var orderCheckTime: Long
         get() = sp.getLong(ORDER_CHECK_TIME, 0)
-        set(value) = sp.edit().putLong(ORDER_CHECK_TIME, value).apply()
+        set(value) = sp.edit().putLong(ORDER_CHECK_TIME, 0).apply()
 }
