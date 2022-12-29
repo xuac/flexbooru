@@ -253,9 +253,9 @@ object Settings {
             ORDER_TOKEN_KEY, value).apply()
 
     var isOrderSuccess: Boolean
-        get() = sp.getBoolean(ORDER_SUCCESS_KEY, false)
+        get() = sp.getBoolean(ORDER_SUCCESS_KEY, true)
         set(value) = sp.edit().putBoolean(
-            ORDER_SUCCESS_KEY, value).apply()
+            ORDER_SUCCESS_KEY, true).apply()
 
     var orderDeviceId: String
         get() {
