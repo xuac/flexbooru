@@ -3,16 +3,16 @@ name: Android CI
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 jobs:
   build:
-
+    strategy:
+      matrix:
+        build: ["Debug", "Release"]
     runs-on: ubuntu-latest
 
     env:
-      GRADLE_OPTS: -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy="in-process" -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
+      GRADLE_OPTS: -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy="in-process"
       CI: true
 
     steps:
@@ -27,15 +27,14 @@ jobs:
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
       with:
-        cache-disabled: true
 
-    - name: Debug Build with Gradle
-      run: ./gradlew assembleDebug --warning-mode all
+    - name: ${{ matrix.build }} Build with Gradle
+      run: ./gradlew assemble${{ matrix.build }} --warning-mode all
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
       with:
         name: flexbooru_pro_patch
-        path: android/build/outputs/apk/debug/*.apk
+        path: android/build/outputs/apk/*/*.apk
         if-no-files-found: ignore
-        retention-days: 1
+        retention-days: 90
