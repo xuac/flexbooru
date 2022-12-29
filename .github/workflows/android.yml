@@ -6,6 +6,8 @@ on:
 
 jobs:
   build:
+    name: ${{ matrix.build }} Build
+
     strategy:
       matrix:
         build: ["Debug", "Release"]
