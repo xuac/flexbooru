@@ -13,21 +13,21 @@ jobs:
 
     env:
       GRADLE_OPTS: -Dorg.gradle.workers.max=1 -Dorg.gradle.daemon=false -Dkotlin.compiler.execution.strategy="in-process" -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
+      CI: true
 
     steps:
     - uses: actions/checkout@v3
     - name: set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '19'
-        distribution: 'zulu'
+        java-version: '11'
         cache: gradle
 
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
 
     - name: Build with Gradle
-      run: ./gradlew build -x lint -x test
+      run: ./gradlew assemble -x lint -x test --warning-mode all
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
