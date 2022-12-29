@@ -35,7 +35,7 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
       with:
-        name: flexbooru_pro_patch
+        name: FlexbooruPro${{ matrix.build }}
         path: android/build/outputs/apk/*/*.apk
         if-no-files-found: ignore
         retention-days: 90

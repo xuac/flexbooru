@@ -57,7 +57,7 @@ android {
     buildToolsVersion = "33.0.0"
     defaultConfig {
         applicationId = "onlymash.flexbooru.play"
-        minSdk = 33
+        minSdk = 21
         targetSdk = 33
         versionCode = verCode
         versionName = "3.1.99999+xuac"
