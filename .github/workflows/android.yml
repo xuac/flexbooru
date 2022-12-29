@@ -17,9 +17,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      # with:
-      #   ref: 'cf18bca267c0089572eadea692d9b4440df63224'
-      
+
     - name: set up JDK
       uses: actions/setup-java@v3
       with:
@@ -33,15 +31,10 @@ jobs:
     - name: Debug Build with Gradle
       run: ./gradlew assembleDebug --warning-mode all
 
-    - name: Release Build with Gradle
-      run: ./gradlew assembleRelease
-
-    - run: ls -lhaR android/build/outputs/apk/
-
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.1
       with:
         name: flexbooru_pro_patch
-        path: android/build/outputs/apk/**/*.apk
+        path: android/build/outputs/apk/debug/*.apk
         if-no-files-found: ignore
         retention-days: 1

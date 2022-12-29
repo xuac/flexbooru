@@ -57,10 +57,10 @@ android {
     buildToolsVersion = "33.0.0"
     defaultConfig {
         applicationId = "onlymash.flexbooru.play"
-        minSdk = 30
+        minSdk = 33
         targetSdk = 33
         versionCode = verCode
-        versionName = "3.1.399"
+        versionName = "3.1.9999"
         versionNameSuffix = ".c$verCode"
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
